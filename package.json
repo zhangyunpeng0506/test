@@ -1,0 +1,25 @@
+{
+  "name": "webpacktest",
+  "version": "1.0.0",
+  "description": "学习使用webpack",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangyunpeng0506/test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhangyunpeng0506/test/issues"
+  },
+  "homepage": "https://github.com/zhangyunpeng0506/test#readme",
+  "devDependencies": {
+    "css-loader": "^3.5.3",
+    "style-loader": "^1.2.1",
+    "webpack": "^3.6.0"
+  }
+}
