@@ -15,3 +15,12 @@ export function unique(args){
     console.log('不是数组');
   }
 }
+
+//数字数组最大值
+export function arrMax(args){
+  if(Array.isArray(args)){
+    return Math.max.apply(this,args);
+  }else{
+    console.log('不是数组');
+  }
+}

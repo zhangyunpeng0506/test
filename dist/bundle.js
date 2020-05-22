@@ -74,11 +74,20 @@ var _mathUtils = __webpack_require__(1);
 
 var mathUtils = _interopRequireWildcard(_mathUtils);
 
+var _common = __webpack_require__(2);
+
+var common = _interopRequireWildcard(_common);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 console.log(mathUtils.sum(1));
+console.log(mathUtils.arrMax([2, 3, 4]));
 
-__webpack_require__(2);
+setInterval(function () {
+  console.log(common.formatDate(new Date()));
+}, 1000);
+
+__webpack_require__(3);
 
 /***/ }),
 /* 1 */
@@ -92,6 +101,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.sum = sum;
 exports.unique = unique;
+exports.arrMax = arrMax;
 //数组求和
 function sum() {
   for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
@@ -118,12 +128,71 @@ function unique(args) {
   }
 }
 
+//数字数组最大值
+function arrMax(args) {
+  if (Array.isArray(args)) {
+    return Math.max.apply(this, args);
+  } else {
+    console.log('不是数组');
+  }
+}
+
 /***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var api = __webpack_require__(3);
-            var content = __webpack_require__(4);
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.formatDate = formatDate;
+exports.runner = runner;
+//格式化时间
+function formatDate(time) {
+  var date = new Date(time);
+  var y = date.getFullYear();
+  var m = date.getMonth() + 1;
+  var d = date.getDate();
+  var hh = date.getHours();
+  var mm = date.getMinutes();
+  var ss = date.getSeconds();
+  m = m > 10 ? m : "0" + m;
+  d = d > 10 ? d : "0" + d;
+  hh = hh > 10 ? hh : "0" + hh;
+  mm = mm > 10 ? mm : "0" + mm;
+  ss = ss > 10 ? ss : "0" + ss;
+  return y + "-" + m + "-" + d + " " + hh + ":" + mm + ":" + ss;
+}
+
+//generator函数执行器
+function runner(gen) {
+  var it = gen(); //调用函数
+  return next(it.next()); //启动函数
+
+  function next(_ref) {
+    var done = _ref.done,
+        value = _ref.value;
+
+    Promise.all([value]).then(function (res) {
+      if (done) {
+        return res; //函数全部执行结束则返回值
+      } else {
+        next(it.next(res));
+      }
+    }, function (e) {
+      return e;
+    });
+  }
+}
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(4);
+            var content = __webpack_require__(5);
 
             content = content.__esModule ? content.default : content;
 
@@ -143,7 +212,7 @@ var update = api(content, options);
 module.exports = content.locals || {};
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -418,11 +487,11 @@ module.exports = function (list, options) {
 };
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(5);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(6);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
 exports.push([module.i, "body{\r\n  background-color: azure;\r\n}", ""]);
@@ -431,7 +500,7 @@ module.exports = exports;
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -443,7 +512,6 @@ module.exports = exports;
 */
 // css base code, injected by the css-loader
 // eslint-disable-next-line func-names
-
 module.exports = function (useSourceMap) {
   var list = []; // return the list of modules as css string
 
