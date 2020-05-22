@@ -65,39 +65,55 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_mathUtils__ = __webpack_require__(1);
 
 
-console.log(__WEBPACK_IMPORTED_MODULE_0__js_mathUtils__["a" /* sum */](1));
+var _mathUtils = __webpack_require__(1);
+
+var mathUtils = _interopRequireWildcard(_mathUtils);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+console.log(mathUtils.sum(1));
 
 __webpack_require__(2);
 
-
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = sum;
-/* unused harmony export unique */
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.sum = sum;
+exports.unique = unique;
 //数组求和
-function sum(...args){
-  if(args.every(val=>val&&!isNaN(val))){
-    return args.reduce((prev,current)=>prev+current)
-  }else{
+function sum() {
+  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  if (args.every(function (val) {
+    return val && !isNaN(val);
+  })) {
+    return args.reduce(function (prev, current) {
+      return prev + current;
+    });
+  } else {
     console.log('包含非数字');
   }
 }
 
 //数组去重
-function unique(args){
-  if(Array.isArray(args)){
+function unique(args) {
+  if (Array.isArray(args)) {
     return Array.from(new Set(args));
-  }else{
+  } else {
     console.log('不是数组');
   }
 }
@@ -427,6 +443,7 @@ module.exports = exports;
 */
 // css base code, injected by the css-loader
 // eslint-disable-next-line func-names
+
 module.exports = function (useSourceMap) {
   var list = []; // return the list of modules as css string
 
