@@ -1,0 +1,27 @@
+@import "utils.less";
+//编译后用户看不到的注释
+/*编译后用户可看到的注释*/
+
+//定义变量
+//1.
+@fontSize:50px;
+@color: rgb(204, 232, 207);
+//2.
+@fs:font-size;  //用的很少
+@bd:body; //用的很少
+//3.变量的延时加载，会等同一级的变量解析完才加载
+
+@{bd}{
+  @{fs}:@fontSize;
+  color: @color;
+  background: url("../img/test.jpg");
+  .welcome {
+    &:hover{  //不加&符号最终编译结果为 div :hover;正确为div:hover
+      .hunhe;
+      .hunhe2(500px,@h:300px);  //可以指定实参是给谁的
+    }
+  }
+  .sjx{ //画一个三角形
+    .triangle(left,50px,pink);
+  }
+}

@@ -7,11 +7,11 @@ export function formatDate(time){
   let hh=date.getHours();
   let mm=date.getMinutes();
   let ss=date.getSeconds();
-  m=m>10?m:"0"+m;
-  d=d>10?d:"0"+d;
-  hh=hh>10?hh:"0"+hh;
-  mm=mm>10?mm:"0"+mm;
-  ss=ss>10?ss:"0"+ss;
+  m=m>9?m:"0"+m;
+  d=d>9?d:"0"+d;
+  hh=hh>9?hh:"0"+hh;
+  mm=mm>9?mm:"0"+mm;
+  ss=ss>9?ss:"0"+ss;
   return `${y}-${m}-${d} ${hh}:${mm}:${ss}`;
 }
 

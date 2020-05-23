@@ -9,3 +9,4 @@ setInterval(() => {
 }, 1000);
 
 require('./css/normal.css');
+require('./css/special.less');

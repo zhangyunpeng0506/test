@@ -1,0 +1,38 @@
+//less的混合:将一系列属性从一个规则集引入到另一个的方式
+//不带括号也能使用，但是会被编译到css文件中
+.hunhe() {
+  color: orange;
+}
+
+.hunhe2(@w: 300px, @h) {
+  //冒号后为默认值
+  width:(@w);
+  height: @h;
+}
+
+.border(@w,@s,@c){  //实参列表一次使用
+  border: @arguments;
+}
+
+.triangle(@_,@w,@c) {//匹配模式
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.triangle(top, @w, @c) {
+  border-width: @w;
+  border-color:@c transparent transparent transparent;
+}
+.triangle(right, @w, @c) {
+  border-width: @w;
+  border-color: transparent @c transparent transparent;
+}
+.triangle(bottom, @w, @c) {
+  border-width: @w;
+  border-color: transparent transparent @c transparent;
+}
+.triangle(left, @w:200px, @c) {
+  border-width: @w;
+  border-color: transparent transparent transparent @c;
+}
